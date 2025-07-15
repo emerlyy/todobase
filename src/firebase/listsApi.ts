@@ -8,7 +8,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import type { List } from "../types";
+import type { List, UserRole } from "../types";
 import { db } from "./firebase";
 
 export const createList = async ({
@@ -56,6 +56,26 @@ export const deleteList = async (listId: string): Promise<void> => {
   try {
     const ref = doc(db, "lists", listId);
     await deleteDoc(ref);
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    throw error;
+  }
+};
+
+export const addCollaborator = async ({
+  listId,
+  userId,
+  role,
+}: {
+  listId: string;
+  userId: string;
+  role: UserRole;
+}) => {
+  try {
+    const listRef = doc(db, "lists", listId);
+    await updateDoc(listRef, {
+      [`collaborators.${userId}`]: role,
+    });
   } catch (error) {
     if (error instanceof Error) console.log(error.message);
     throw error;
