@@ -9,7 +9,7 @@ export const useTasks = (listId: string) => {
 
   useEffect(() => {
     dispatch(fetchTasksForList(listId));
-  }, [listId]);
+  }, [listId, dispatch]);
 
   const list = useAppSelector(selectListById(listId));
   const tasks = useAppSelector(selectTasks);

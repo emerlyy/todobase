@@ -46,7 +46,7 @@ const TasksListItem = ({
       title: title,
       description: description,
     });
-  }, [title, description]);
+  }, [title, description, reset]);
 
   const onTaskUpdate: SubmitHandler<TaskFormFields> = (data) => {
     onUpdate({ taskId: id, updates: data });

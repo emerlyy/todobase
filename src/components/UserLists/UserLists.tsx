@@ -15,7 +15,7 @@ const UserLists = ({ userId }: Props) => {
 
   useEffect(() => {
     dispatch(fetchLists(userId));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   const lists = useAppSelector(selectLists);
 

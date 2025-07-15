@@ -25,7 +25,7 @@ const ListDetails = ({ initialTitle, listId }: Props) => {
 
   useEffect(() => {
     reset({ listTitle: initialTitle });
-  }, [initialTitle]);
+  }, [initialTitle, reset]);
 
   const dispatch = useAppDispatch();
 
